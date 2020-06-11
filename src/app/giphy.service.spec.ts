@@ -35,6 +35,7 @@ describe('GiphyService', () => {
   it('should fetch results', () => {
     service.fetchResults('adam').subscribe((res) => {
       expect(res.data.length).toBe(1);
+      expect(res.meta.status).toBe(200);
     });
     const req = httpMock.expectOne(
       `${GIPHY_ENDPOINT}?api_key=${GIPHY_API_KEY}&q=adam&limit=25&offset=0`
@@ -46,6 +47,7 @@ describe('GiphyService', () => {
   it('should fetch paginated results', () => {
     service.fetchResults('adam', 2).subscribe((res) => {
       expect(res.data.length).toBe(1);
+      expect(res.meta.status).toBe(200);
     });
     const req = httpMock.expectOne(
       `${GIPHY_ENDPOINT}?api_key=${GIPHY_API_KEY}&q=adam&limit=25&offset=25`
@@ -57,6 +59,7 @@ describe('GiphyService', () => {
   it('should fetch results with custom limit of items per page', () => {
     service.fetchResults('adam', 2, 100).subscribe((res) => {
       expect(res.data.length).toBe(1);
+      expect(res.meta.status).toBe(200);
     });
     const req = httpMock.expectOne(
       `${GIPHY_ENDPOINT}?api_key=${GIPHY_API_KEY}&q=adam&limit=100&offset=100`
