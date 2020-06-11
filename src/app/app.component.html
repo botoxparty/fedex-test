@@ -3,7 +3,7 @@
     <mat-label>Search for a GIF...</mat-label>
     <input matInput placeholder="e.g. Puppies" aria-label="Search for a GIF" [formControl]="control" (blur)="search()"
       (keydown.enter)="search()">
-    <mat-icon matSuffix>search</mat-icon>
+    <mat-icon role="button" (click)="search()" matSuffix>search</mat-icon>
     <mat-error *ngIf="control.errors?.profanity">Must not include any swear words</mat-error>
   </mat-form-field>
 </mat-toolbar>

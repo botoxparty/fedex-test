@@ -71,6 +71,8 @@ Try it out: [http://localhost:4200/?q=puppies&page=20&size=50](http://localhost:
 
 [![npm version](https://badge.fury.io/js/simple-profanity-filter.svg)](https://badge.fury.io/js/simple-profanity-filter)
 
+A really simple library that uses RegEx to parse bad words from a string.
+
 - No dependencies
 - Uses Google's swear word list (was previously an API but is now closed)
 - Tests included
@@ -80,12 +82,24 @@ Try it out: [http://localhost:4200/?q=puppies&page=20&size=50](http://localhost:
 
 [![npm version](https://badge.fury.io/js/%40giphy%2Fjs-fetch-api.svg)](https://github.com/Giphy/giphy-js/blob/master/packages/fetch-api/README.md)
 
-I have included this as a devDependency because i'm only using the typings from the library. When using the official library there were incompatibilies using switchMap to cancel previous requests (e.g. if the user clicks through pages very fast).
+When using the official library there were incompatibilies using switchMap to cancel previous requests (e.g. if the user clicks through pages very fast).
 
-I implemented my own service, using the offical typings. Looking further down the line, if I needed to use more of the API's features it could be worth switching to the official library as this will have an impact on maintainability. The official library comes fully tested and it would be good to leverage that.
-
-I would potentially fork the official library and allow it to take in an HTTP client to perform the request, that way I could override the fetch request that currently gets called.
+I implemented my own service and included `@giphy/js-fetch-api` as a devDependency because i'm only using the typings from the library. You can verify the correct behaviour for cancelling previous requests in the network inspector.
 
 _Preview of my implementation working correctly with switchMap to cancel previous requests_
 
 ![User making a lot of requests](./cancel-reqs.gif)
+
+Looking further down the line, if I needed to use more of the API's features it could be worth switching to the official library as this will have an impact on maintainability. The official library comes fully tested and it would be good to leverage that. I would potentially fork the official library and allow it to take in an HTTP client to perform the request, that way I could override the fetch request that currently gets called.
+
+#### [@angular/material](https://material.angular.io/)
+
+[![npm version](https://badge.fury.io/js/%40angular%2Fmaterial.svg)](https://badge.fury.io/js/%40angular%2Fmaterial)
+
+Components used:
+
+- [MatInput](https://material.angular.io/components/input/overview)
+- [MatFormField](https://material.angular.io/components/form-field/overview)
+- [MatToolbar](https://material.angular.io/components/toolbar/overview)
+- [MatPaginator](https://material.angular.io/components/paginator/overview)
+- [MatIcon](https://material.angular.io/components/icon/overview)

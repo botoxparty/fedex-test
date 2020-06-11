@@ -2,6 +2,9 @@ mat-toolbar {
     height: unset;
     mat-form-field {
         flex: 1;
+        mat-icon {
+            cursor: pointer;
+        }
     }
 }
 
