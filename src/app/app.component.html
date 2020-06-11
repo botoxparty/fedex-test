@@ -1,12 +1,13 @@
 <mat-toolbar>
   <mat-form-field floatLabel="never" class="example-full-width">
     <mat-label>Search for a GIF...</mat-label>
-    <input matInput placeholder="e.g. Puppies" [formControl]="control" (blur)="search()" (keydown.enter)="search()">
+    <input matInput placeholder="e.g. Puppies" aria-label="Search for a GIF" [formControl]="control" (blur)="search()"
+      (keydown.enter)="search()">
     <mat-icon matSuffix>search</mat-icon>
     <mat-error *ngIf="control.errors?.profanity">Must not include any swear words</mat-error>
   </mat-form-field>
 </mat-toolbar>
-<div *ngIf="loading" class="loading"></div>
+<div *ngIf="loading" class="loading" role="progressbar" aria-label="Loading..." aria-busy="true"></div>
 <mat-paginator #paginator [pageSizeOptions]="[25, 50, 100]" (page)="paginate($event)" [showFirstLastButtons]="true">
 </mat-paginator>
 
@@ -17,8 +18,8 @@
   <h1 *ngIf="!loading && !currentSearchValue" (click)="paginator.nextPage()">Enter a term to start searching</h1>
 </div>
 
-<div class="grid">
+<div class="grid" aria-label="Search Results">
   <div class="grid__item" *ngFor="let result of results | async">
-    <img [src]="result.images.preview_webp?.url || result.images.original.url" />
+    <img [alt]="result.title" [src]="result.images.preview_webp?.url || result.images.original.url" />
   </div>
 </div>
