@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import {
@@ -8,7 +8,7 @@ import {
   QueryParamsHandling,
 } from '@angular/router';
 import { switchMap, delay } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, Subscription } from 'rxjs';
 import {
   GiphyService,
   DEFAULT_PAGE_SIZE,
@@ -23,12 +23,13 @@ import { profanityValidator } from './profanity.validator';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnDestroy {
   @ViewChild('paginator') paginator: MatPaginator;
   results = new Subject<Array<IGif>>();
   currentSearchValue = '';
   loading = false;
   control = new FormControl('', [profanityValidator]);
+  subscription: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -37,9 +38,13 @@ export class AppComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    this.activatedRoute.queryParams
+    this.subscription = this.activatedRoute.queryParams
       .pipe(delay(0), switchMap(this.processQueryParams))
       .subscribe(this.processGiphyResult);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   search(): void {
