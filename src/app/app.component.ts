@@ -44,7 +44,9 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   search(): void {
@@ -92,7 +94,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
     this.loading = true;
     return this.giphy.fetchResults(this.currentSearchValue, page, size);
-  };
+  }
 
   private processGiphyResult = (res: GifsResult): void => {
     const {
@@ -103,7 +105,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     const size = Math.max(this.paginator.pageSize, count);
     this.updatePaginator(offset / size, size, total_count);
     this.results.next(data);
-  };
+  }
 
   private updatePaginator = (
     pageIndex: number,
@@ -114,5 +116,5 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     this.paginator.pageSize = pageSize;
     // Giphy API is limited to only respond with the first 5000 results, querying for anything above 5000 will not work
     this.paginator.length = Math.min(5000, length);
-  };
+  }
 }

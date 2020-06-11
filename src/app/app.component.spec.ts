@@ -51,10 +51,8 @@ describe('AppComponent', () => {
   });
 
   it('should render the search input', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('input').placeholder).toContain(
+    expect(debug.nativeElement.querySelector('input').placeholder).toContain(
       'e.g. Puppies'
     );
   });
