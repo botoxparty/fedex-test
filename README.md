@@ -103,15 +103,15 @@ A really simple library that uses RegEx to parse bad words from a string.
 
 [![npm version](https://badge.fury.io/js/%40giphy%2Fjs-fetch-api.svg)](https://github.com/Giphy/giphy-js/blob/master/packages/fetch-api/README.md)
 
-When using the official library there were incompatibilies using switchMap to cancel previous requests (e.g. if the user clicks through pages very fast).
+When using the official library there were incompatibilies using switchMap to cancel previous requests (e.g. if the user clicks through pages very fast). switchMap requires an Observable and the official SDK returns a Promise from fetch. Converting the Promise to an Observable was not working.
 
-I implemented my own service and included `@giphy/js-fetch-api` as a devDependency because i'm only using the typings from the library. You can verify the correct behaviour for cancelling previous requests in the network inspector.
+I implemented my own service and included `@giphy/js-fetch-api` as a devDependency because i'm only using the typings from the library. As a benefit there's a reduction in package size and dependencies, however it has increased the complexity for maintenance. You can verify the correct behaviour for cancelling previous requests in the network inspector.
 
 _Preview of my implementation working correctly with switchMap to cancel previous requests_
 
 ![User making a lot of requests](./cancel-reqs.gif)
 
-Looking further down the line, if I needed to use more of the API's features it could be worth switching to the official library as this will have an impact on maintainability. The official library comes fully tested and it would be good to leverage that. I would potentially fork the official library and allow it to take in an HTTP client to perform the request, that way I could override the fetch request that currently gets called.
+Looking further down the line, if I needed to use more of the API's features it could be worth switching to the official library as this will have an impact on maintainability. The official library comes fully tested and it would be good to leverage that. I would probably fork the official library and have an input for a custom HTTP client to perform the request, that way I could override the fetch request that currently gets called and return an Observable.
 
 ### [@angular/material](https://material.angular.io/)
 
