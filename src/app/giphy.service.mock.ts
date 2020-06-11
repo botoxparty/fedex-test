@@ -4,8 +4,6 @@ import { of, Observable } from 'rxjs';
 
 @Injectable()
 export class GiphyServiceMock {
-  constructor() {}
-
   fetchResults(search?: string): Observable<GifsResult> {
     return of((MOCK_RESPONSE as any) as GifsResult);
   }
