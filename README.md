@@ -4,7 +4,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ![Screenshot](./screenshot.jpg)
 
-## Development
+# Table of Contents
+
+1. [Development](#Development)
+2. [Testing](#Testing)
+3. [UX](#UX)
+4. [Technical Considerations](#Technical-Considerations)
+   - [GIPHY API](#GIPHY-API)
+   - [State Managament](#State-Managament)
+   - [Third Party Libraries](#Third-Party-Libraries)
+
+# Development
 
 ### Setup
 
@@ -32,16 +42,26 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## UX
+# UX
 
 The interface is made up of 3 components: Search, Pagination, Grid
 
 I have chosen to use the [Angular Material](https://material.angular.io/) component library.
 The grid is responsive for mobile, tablet and desktop devices.
 
+Components used:
+
+- [MatInput](https://material.angular.io/components/input/overview)
+- [MatFormField](https://material.angular.io/components/form-field/overview)
+- [MatToolbar](https://material.angular.io/components/toolbar/overview)
+- [MatPaginator](https://material.angular.io/components/paginator/overview)
+- [MatIcon](https://material.angular.io/components/icon/overview)
+
+## Wireframe
+
 ![Basic wireframe](./wireframe.png)
 
-### Potential Improvements
+## Potential Improvements
 
 #### Infinite scroll & Virtual scroll
 
@@ -53,11 +73,12 @@ Otherwise if you scroll down a few pages you can have hundreds of elements loade
 
 To reduce friction when searching and navigating between pages skeleton loaders could be added. This will benefit the perceived speed of the application.
 
-## Technical considerations
+# Technical Considerations
+
+## GIPHY API
 
 - The GIPHY API cannot paginate beyond 5,000 items.
 - The GIPHY API does not always return a preview URL
-- When you started adding functionality to the grid you would extract it to its own compoment.
 
 ### State Managament
 
@@ -65,9 +86,9 @@ I am using the URL query parameters to manage the application state. It makes se
 
 Try it out: [http://localhost:4200/?q=puppies&page=20&size=50](http://localhost:4200/?q=puppies&page=20&size=50)
 
-### Third Party Libraries
+## Third Party Libraries
 
-#### [simple-profanity-filter](https://badge.fury.io/js/simple-profanity-filter)
+### [simple-profanity-filter](https://badge.fury.io/js/simple-profanity-filter)
 
 [![npm version](https://badge.fury.io/js/simple-profanity-filter.svg)](https://badge.fury.io/js/simple-profanity-filter)
 
@@ -78,7 +99,7 @@ A really simple library that uses RegEx to parse bad words from a string.
 - Tests included
 - Lightweight and expandable
 
-#### [@giphy/js-fetch-api](https://github.com/Giphy/giphy-js/blob/master/packages/fetch-api/README.md)
+### [@giphy/js-fetch-api](https://github.com/Giphy/giphy-js/blob/master/packages/fetch-api/README.md)
 
 [![npm version](https://badge.fury.io/js/%40giphy%2Fjs-fetch-api.svg)](https://github.com/Giphy/giphy-js/blob/master/packages/fetch-api/README.md)
 
@@ -92,14 +113,8 @@ _Preview of my implementation working correctly with switchMap to cancel previou
 
 Looking further down the line, if I needed to use more of the API's features it could be worth switching to the official library as this will have an impact on maintainability. The official library comes fully tested and it would be good to leverage that. I would potentially fork the official library and allow it to take in an HTTP client to perform the request, that way I could override the fetch request that currently gets called.
 
-#### [@angular/material](https://material.angular.io/)
+### [@angular/material](https://material.angular.io/)
 
 [![npm version](https://badge.fury.io/js/%40angular%2Fmaterial.svg)](https://badge.fury.io/js/%40angular%2Fmaterial)
 
-Components used:
-
-- [MatInput](https://material.angular.io/components/input/overview)
-- [MatFormField](https://material.angular.io/components/form-field/overview)
-- [MatToolbar](https://material.angular.io/components/toolbar/overview)
-- [MatPaginator](https://material.angular.io/components/paginator/overview)
-- [MatIcon](https://material.angular.io/components/icon/overview)
+See components used in [UX](#UX)
