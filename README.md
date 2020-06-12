@@ -92,7 +92,7 @@ Try it out: [http://localhost:4200/?q=puppies&page=20&size=50](http://localhost:
 
 [![npm version](https://badge.fury.io/js/simple-profanity-filter.svg)](https://badge.fury.io/js/simple-profanity-filter)
 
-A really simple library that uses RegEx to parse bad words from a string.
+A really simple library that uses RegEx to parse bad words from a string. There was an error in the installation instructions for the library so I quickly created a pull request to fix it: [Merge pull request #1 from botoxparty/patch-1](https://github.com/Stahlneckr/simple-profanity-filter/commit/7e88d2f03e9aab3889f50f947ee82d628e902236)
 
 - No dependencies
 - Uses Google's swear word list (was previously an API but is now closed)
