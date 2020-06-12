@@ -80,7 +80,7 @@ To reduce friction when searching and navigating between pages skeleton loaders 
 - The GIPHY API cannot paginate beyond 5,000 items.
 - The GIPHY API does not always return a preview URL
 
-### State Managament
+## State Managament
 
 I am using the URL query parameters to manage the application state. It makes search results easy for users to save and share.
 
