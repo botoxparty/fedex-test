@@ -5,6 +5,10 @@ import { of, Observable } from 'rxjs';
 @Injectable()
 export class GiphyServiceMock {
   fetchResults(search?: string): Observable<GifsResult> {
+    /* There were inconsistencies between the GifsResult type and the
+     *  actual response from the GIPHY API that I captured so I am
+     *  casting it as (any) before casting as GifsResult
+     */
     return of((MOCK_RESPONSE as any) as GifsResult);
   }
 }
